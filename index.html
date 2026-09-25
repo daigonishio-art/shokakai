@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>◯◯書道教室(仮)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;700&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#f3ede0;
+    --paper-deep:#eae2cf;
+    --ink:#242019;
+    --ink-soft:#5c564a;
+    --vermillion:#a53c27;
+    --line:#d9cfb8;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:"Noto Sans JP",sans-serif;
+    line-height:1.9;
+    font-size:16px;
+  }
+  h1,h2,h3{
+    font-family:"Shippori Mincho",serif;
+    font-weight:700;
+    letter-spacing:.04em;
+    margin:0;
+  }
+  a{color:inherit;}
+  .wrap{max-width:760px;margin:0 auto;padding:0 24px;}
+  header.top{
+    text-align:center;
+    padding:64px 24px 40px;
+  }
+  header.top nav{
+    display:flex;
+    justify-content:center;
+    gap:28px;
+    flex-wrap:wrap;
+    font-size:14px;
+    color:var(--ink-soft);
+    margin-top:28px;
+  }
+  header.top nav a{text-decoration:none;}
+  header.top nav a:hover{color:var(--vermillion);}
+
+  .hero{
+    text-align:center;
+    padding:20px 24px 100px;
+    position:relative;
+  }
+  .hero .kanji{
+    font-size:clamp(120px,26vw,220px);
+    line-height:1;
+    color:var(--ink);
+    opacity:.08;
+    user-select:none;
+    margin-bottom:-40px;
+  }
+  .hero h1{
+    font-size:clamp(28px,4.5vw,40px);
+    margin-bottom:14px;
+  }
+  .hero p.copy{
+    color:var(--ink-soft);
+    font-size:15px;
+    max-width:34em;
+    margin:0 auto;
+  }
+  .hero .mark{
+    display:inline-block;
+    margin-top:28px;
+    width:44px;height:44px;
+    line-height:44px;
+    border-radius:50%;
+    background:var(--vermillion);
+    color:var(--paper);
+    font-family:"Shippori Mincho",serif;
+    font-size:20px;
+  }
+
+  section{
+    padding:64px 0;
+    border-top:1px solid var(--line);
+  }
+  section.alt{background:var(--paper-deep);}
+  section .wrap{padding:0 24px;}
+  section.alt > .wrap{padding-top:0;padding-bottom:0;}
+  section.alt{padding:64px 0;}
+
+  .label{
+    font-size:13px;
+    color:var(--vermillion);
+    margin-bottom:10px;
+    letter-spacing:.08em;
+  }
+  h2.title{
+    font-size:24px;
+    margin-bottom:28px;
+  }
+
+  .news-list{list-style:none;margin:0;padding:0;}
+  .news-list li{
+    display:flex;
+    gap:24px;
+    padding:16px 0;
+    border-bottom:1px solid var(--line);
+    font-size:15px;
+  }
+  .news-list li:last-child{border-bottom:none;}
+  .news-list time{color:var(--ink-soft);flex-shrink:0;width:6.5em;font-variant-numeric:tabular-nums;}
+
+  .story p{max-width:36em;}
+  .story .quote{
+    border-left:2px solid var(--vermillion);
+    padding-left:20px;
+    margin:28px 0;
+    color:var(--ink-soft);
+    font-size:15px;
+  }
+
+  .profile{display:flex;gap:32px;flex-wrap:wrap;align-items:flex-start;}
+  .profile .frame{
+    width:120px;height:120px;
+    flex-shrink:0;
+    border:1px solid var(--line);
+    display:flex;align-items:center;justify-content:center;
+    font-family:"Shippori Mincho",serif;
+    color:var(--ink-soft);
+    font-size:13px;
+  }
+  .profile .text{flex:1;min-width:240px;}
+  .profile h3{font-size:19px;margin-bottom:6px;}
+  .profile .role{color:var(--ink-soft);font-size:14px;margin-bottom:14px;}
+
+  table.courses{
+    width:100%;
+    border-collapse:collapse;
+    font-size:15px;
+  }
+  table.courses th,table.courses td{
+    text-align:left;
+    padding:14px 12px;
+    border-bottom:1px solid var(--line);
+  }
+  table.courses th{
+    font-weight:500;
+    color:var(--ink-soft);
+    font-size:13px;
+  }
+  table.courses td.fee{white-space:nowrap;}
+  .note{font-size:13px;color:var(--ink-soft);margin-top:16px;}
+
+  .access dl{display:grid;grid-template-columns:5.5em 1fr;gap:10px 20px;font-size:15px;margin:0 0 24px;}
+  .access dt{color:var(--ink-soft);}
+  .access dd{margin:0;}
+  .map-placeholder{
+    border:1px solid var(--line);
+    height:220px;
+    display:flex;align-items:center;justify-content:center;
+    color:var(--ink-soft);
+    font-size:14px;
+  }
+
+  .contact{text-align:center;}
+  .contact p{color:var(--ink-soft);margin-bottom:28px;}
+  .contact .items{
+    display:inline-flex;
+    flex-direction:column;
+    gap:14px;
+    text-align:left;
+    font-size:15px;
+  }
+  .contact .items span{color:var(--ink-soft);font-size:13px;display:block;}
+
+  footer{
+    text-align:center;
+    padding:40px 24px 56px;
+    font-size:13px;
+    color:var(--ink-soft);
+  }
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <nav>
+      <a href="#story">教室について</a>
+      <a href="#profile">講師紹介</a>
+      <a href="#courses">コース・月謝</a>
+      <a href="#news">お知らせ</a>
+      <a href="#access">アクセス</a>
+      <a href="#contact">お問い合わせ</a>
+    </nav>
+  </div>
+</header>
+
+<div class="hero">
+  <div class="kanji">書</div>
+  <h1>◯◯書道教室</h1>
+  <p class="copy">祖父の代から受け継ぐ教室で、子どもから大人まで、自分のペースで筆と向き合う時間を。</p>
+  <div class="mark">印</div>
+</div>
+
+<section id="news">
+  <div class="wrap">
+    <p class="label">お知らせ</p>
+    <h2 class="title">News</h2>
+    <ul class="news-list">
+      <li><time>2026.09</time><span>秋の体験レッスンの日程を追加しました。</span></li>
+      <li><time>2026.08</time><span>夏休み特別教室(仮)の様子を掲載しました。</span></li>
+    </ul>
+  </div>
+</section>
+
+<section id="story" class="alt">
+  <div class="wrap story">
+    <p class="label">教室について</p>
+    <h2 class="title">祖父から、父へ</h2>
+    <p>この教室は、祖父が地域の子どもたちに書の楽しさを伝えたいという思いから始めました。長い時間をかけて多くの生徒さんと向き合ってきたその教室を、このたび息子である私が引き継ぐことになりました。</p>
+    <p class="quote">字がうまくなることだけでなく、筆を持つ時間そのものを大切にしてほしい。祖父が大事にしてきたその考え方を、これからも受け継いでいきます。</p>
+    <p>初めて筆を持つお子さんから、久しぶりに書を再開したい大人の方まで、それぞれのペースで通っていただける教室を目指しています。</p>
+  </div>
+</section>
+
+<section id="profile">
+  <div class="wrap">
+    <p class="label">講師紹介</p>
+    <h2 class="title">講師のご紹介</h2>
+    <div class="profile">
+      <div class="frame">写真(仮)</div>
+      <div class="text">
+        <h3>◯◯ ◯◯(仮)</h3>
+        <p class="role">書道師範 / 二代目</p>
+        <p>幼少期より祖父のもとで書道に親しみ、師範資格を取得。地域の学校での指導経験も持つ。生徒一人ひとりの個性を大切にした指導を心がけている。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="courses" class="alt">
+  <div class="wrap">
+    <p class="label">コース・月謝</p>
+    <h2 class="title">Course</h2>
+    <table class="courses">
+      <tr><th>コース</th><th>対象</th><th>時間</th><th>月謝</th></tr>
+      <tr><td>幼児・小学生コース</td><td>年長〜小学6年生</td><td>60分</td><td class="fee">¥5,000(仮)</td></tr>
+      <tr><td>中学・高校生コース</td><td>中学生〜高校生</td><td>60分</td><td class="fee">¥6,000(仮)</td></tr>
+      <tr><td>大人コース</td><td>高校生以上</td><td>60分</td><td class="fee">¥6,500(仮)</td></tr>
+      <tr><td>体験レッスン</td><td>どなたでも</td><td>60分</td><td class="fee">¥1,000(仮)</td></tr>
+    </table>
+    <p class="note">※料金・コース内容は現在調整中です。教材費は別途必要です。</p>
+  </div>
+</section>
+
+<section id="access">
+  <div class="wrap access">
+    <p class="label">アクセス</p>
+    <h2 class="title">Access</h2>
+    <dl>
+      <dt>住所</dt><dd>◯◯県◯◯市◯◯町 1-2-3(仮)</dd>
+      <dt>最寄駅</dt><dd>◯◯駅 徒歩5分(仮)</dd>
+      <dt>駐車場</dt><dd>あり(仮)</dd>
+    </dl>
+    <div class="map-placeholder">地図(あとで埋め込みます)</div>
+  </div>
+</section>
+
+<section id="contact" class="alt">
+  <div class="wrap contact">
+    <p class="label">お問い合わせ</p>
+    <h2 class="title">Contact</h2>
+    <p>体験レッスンのお申し込み・ご質問はこちらから。</p>
+    <div class="items">
+      <div><span>電話</span>000-0000-0000(仮)</div>
+      <div><span>メール</span>example@example.com(仮)</div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  &copy; ◯◯書道教室
+</footer>
+
+</body>
+</html>
